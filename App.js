@@ -1,21 +1,66 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, Text, View,ImageBackground } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Feather } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons';
+import Home from './NavigationTab/Home'
+import Menu from './NavigationTab/Menu'
 
-export default function App() {
+//  import image from  './assets/bg.png' ;
+const image = { uri: "https://image.freepik.com/free-vector/muslim-ramadan-kareem-festival-greeting-design_1017-30817.jpg" };
+
+
+
+ function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+     <Home/>
     </View>
   );
 }
 
+function MenuScreen() {
+  return (
+    <View>
+      <Menu/>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+
+
+  return (
+    <NavigationContainer>
+    <Tab.Navigator>
+      <Tab.Screen
+      options={{
+        tabBarLabel:'Home',
+        tabBarIcon: () => (
+          <Feather name="home" size={24} color="#009F79" />
+        )
+      }} name="HomeScreen" component={HomeScreen} />
+       <Tab.Screen
+      options={{
+        tabBarLabel:'Menu',
+        tabBarIcon: () => (
+          <MaterialIcons name="restaurant-menu" size={24} color="#009F79" />
+         
+        )
+      }} name="restaurant-menu" component={MenuScreen} />
+     
+    </Tab.Navigator>
+  </NavigationContainer>
+
+
+
+
+  );
+}
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
 });
