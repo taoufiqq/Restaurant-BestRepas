@@ -1,9 +1,8 @@
 import React from 'react'
 import {StyleSheet, View, Text, Image, TouchableOpacity, FlatList, ScrollView, SafeAreaView } from 'react-native'
 import { Container,Content,Header,CardItem, Card, Icon  } from 'native-base';
-import { NavigationContainer } from '@react-navigation/native';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from '@expo/vector-icons';
-import { greaterThan } from 'react-native-reanimated';
 
 const DATA = [
   {
@@ -64,7 +63,13 @@ const Item = ({title, price, image}) => (
      </View>
 </View>
 )
-
+// const storeData = async (value) => {
+//   try {
+//     await AsyncStorage.setItem('@storage_Key', value)
+//   } catch (e) {
+   
+//   }
+// }
 
 export default function Menu() {
 
